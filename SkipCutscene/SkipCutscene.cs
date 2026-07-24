@@ -22,6 +22,8 @@ public class SkipCutscene : IDalamudPlugin
 
         _config = configuration;
 
+        Localization.Init(Interface.AssemblyLocation.DirectoryName);
+
         Address.Offset1 = SigScanner.ScanText("75 ?? 48 8b 0d ?? ?? ?? ?? ba ?? 00 00 00 48 83 c1 10 e8 ?? ?? ?? ?? 83 78 ?? ?? 74");
         Address.Offset2 = SigScanner.ScanText("74 18 8B D7 48 8D 0D");
         PluginLog.Information(
@@ -49,7 +51,7 @@ public class SkipCutscene : IDalamudPlugin
 
         CommandManager.AddHandler("/sc", new CommandInfo(OnCommand)
         {
-            HelpMessage = "/sc: skip cutscene enable/disable."
+            HelpMessage = "/sc: skip cutscene enable/disable.".Loc()
         });
     }
 
@@ -89,7 +91,7 @@ public class SkipCutscene : IDalamudPlugin
     private void OnCommand(string command, string arguments)
     {
         if (command.ToLower() != "/sc") return;
-        ChatGui.Print(_config.IsEnabled ? "Skip Cutscene: Disabled" : "Skip Cutscene: Enabled");
+        ChatGui.Print(_config.IsEnabled ? "Skip Cutscene: Disabled".Loc() : "Skip Cutscene: Enabled".Loc());
         _config.IsEnabled = !_config.IsEnabled;
         SetEnabled(_config.IsEnabled);
         Interface.SavePluginConfig(_config);
