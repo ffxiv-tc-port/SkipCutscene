@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Name>SkipCutscene</Name>
     <Punchline>Skip Cutscene</Punchline>
-    <Authors>KangasZ, Lother</Authors>
+    <Authors>KangasZ</Authors>
     <RootNamespace>SkipCutscene</RootNamespace>
     <Copyright>MIT</Copyright>
   </PropertyGroup>
