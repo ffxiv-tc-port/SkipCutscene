@@ -2,6 +2,6 @@ author: KangasZ
 name: Skip Cutscene
 punchline: 跳過過場動畫
 description: 幫助你跳過「任務輪盤：主線任務」中 50 級三個副本強制播放的過場動畫
-repo_url: https://github.com/Lother/SkipCutscene
-icon_url: https://raw.githubusercontent.com/Lother/DalamudPluginsTC/main/icons/SkipCutscene.png
+repo_url: https://github.com/ffxiv-tc-port/SkipCutscene
+icon_url: https://raw.githubusercontent.com/ffxiv-tc-port/DalamudPluginsTC/main/icons/SkipCutscene.png
 tags: [cutscene, msq, qol]
