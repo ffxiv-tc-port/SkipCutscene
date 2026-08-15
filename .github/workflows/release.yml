@@ -48,3 +48,5 @@ jobs:
             SkipCutscene.zip
             SkipCutscene/bin/Release/SkipCutscene/SkipCutscene.json
           generate_release_notes: true
+
+# 2026-08-16: repo 重建後 workflow_dispatch-only workflow 未被 Actions 重新註冊,touch 本檔強制重掃
