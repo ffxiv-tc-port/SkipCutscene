@@ -1,24 +1,36 @@
-<Project Sdk="Dalamud.NET.Sdk/15.0.0">
+<Project Sdk="Dalamud.NET.Sdk/12.0.2">
   <PropertyGroup>
     <Name>SkipCutscene</Name>
     <Punchline>Skip Cutscene</Punchline>
     <Authors>KangasZ</Authors>
-    <Version>3.0.1.5</Version>
     <RootNamespace>SkipCutscene</RootNamespace>
     <Copyright>MIT</Copyright>
   </PropertyGroup>
 
   <PropertyGroup>
-    <TargetFramework>net10.0-windows</TargetFramework>
     <Platforms>x64</Platforms>
     <Nullable>enable</Nullable>
-    <LangVersion>latest</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
+
   <PropertyGroup>
-    <DalamudLibPath>$(appdata)\XIVLauncher\addon\Hooks\dev\</DalamudLibPath>
+    <BuildNumberFile>$(MSBuildProjectDirectory)\BuildNumber.txt</BuildNumberFile>
+    <_PreviousBuildNumber Condition="Exists('$(BuildNumberFile)')">$([System.IO.File]::ReadAllText('$(BuildNumberFile)').Trim())</_PreviousBuildNumber>
+    <_PreviousBuildNumber Condition="'$(_PreviousBuildNumber)' == ''">0</_PreviousBuildNumber>
+    <BuildNumber>$([MSBuild]::Add($(_PreviousBuildNumber), 1))</BuildNumber>
+    <VersionPrefix>7.15.0</VersionPrefix>
+    <Version>$(VersionPrefix).$(BuildNumber)</Version>
+    <AssemblyVersion>$(Version)</AssemblyVersion>
+    <FileVersion>$(Version)</FileVersion>
   </PropertyGroup>
+  <Target Name="PersistBuildNumber" AfterTargets="Build">
+    <WriteLinesToFile File="$(BuildNumberFile)" Lines="$(BuildNumber)" Overwrite="true" />
+  </Target>
+
+  <ItemGroup>
+    <Content Include="LanguageChineseTraditional.ini" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
 </Project>
