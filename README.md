@@ -1,15 +1,18 @@
-# Skip Cutscene
-## Description
-This plugin is the existing SkipCutscene plugin by existing creators. However, certain things have changed including the `/sc` command is simpler and it's probably updated quicker on release of a new patch.
+# SkipCutscene
 
-The sole purpose of the plugin is to skip the forced msq cutscenes in the three msq dungeons at level 50.
+略過強制播放的過場動畫，讓遊戲原有的「略過過場」設定得以在強制過場上生效。
 
-## Installation
-To use the plugin, please install the custom repository with the following link:
+原作者：[KangasZ/SkipCutscene](https://github.com/KangasZ/SkipCutscene)
 
-`https://raw.githubusercontent.com/KangasZ/DalamudPluginRepository/main/plugin_repository.json`
+## 運作方式
 
-Please do not include my projects in other custom repos like Aku API.
+台服 7.20 執行檔中有三個判斷「是否播放此過場」的函式，本插件以記憶體 patch 的方式移除
+其中強制播放的判斷閘門，讓遊戲逐過場的略過設定得以正常生效。
 
-## Notice
-This is distributed with the MIT license. I take absolutely no responsibility for any actions by the users of this plugin.
+- 寫入前逐位元組比對現場，確認與預期相符才動手；只要有一處對不上，該函式**一個位元組都不會寫**
+- 遊戲更新導致特徵碼或現場位元組不符時，會自動停用對應功能以保護遊戲，並在記錄檔留下訊息
+- 還原時同樣逐位元組驗證現場，不會盲目寫回
+
+## 指令
+
+- `/sc`：切換啟用／停用
