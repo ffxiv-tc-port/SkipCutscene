@@ -21,4 +21,10 @@
 - patch 方式改寫成上面的「三個函式、逐位元組驗證」，對上台服執行檔；遊戲改版對不上時自動停用、不會讓插件載入失敗
 - 介面繁體中文化
 
+## 安裝
+
+`/xlsettings` 開「Dalamud 設定」→「試驗性功能」→「第三方插件倉庫」，加入 `https://raw.githubusercontent.com/ffxiv-tc-port/DalamudPluginsTC/main/repo.json` 並啟用、儲存，再到「插件管理員」（`/xlplugins`）安裝；同一個插件只裝這裡的版本，不要同時裝上游版。
+
 原作者：[KangasZ](https://github.com/KangasZ)
+
+授權：MIT（見 LICENSE）
